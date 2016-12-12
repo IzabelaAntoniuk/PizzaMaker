@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PizzaMaker.Model;
+using System.ComponentModel;
 
 namespace PizzaMaker
 {
@@ -23,6 +25,14 @@ namespace PizzaMaker
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void StudentViewControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            PizzaMaker.ViewModel.StudentViewModel studentViewModelObject = new PizzaMaker.ViewModel.StudentViewModel();
+            studentViewModelObject.LoadStudents();
+
+            StudentViewControl.DataContext = studentViewModelObject;
         }
     }
 }
